@@ -1,0 +1,77 @@
+<% include partials/head %>
+
+<style>
+/*    .container {*/
+/*  background-color: #cdbfe3;*/
+/*}*/
+
+.jumbotron {
+  background-color: #cdbfe3;
+  height: 300px;
+  background-image:url(https://images.resto.com/view?iid=resto.be:f336977e-9806-4dff-ad0b-cd50a1a0364a&context=default&width=1400&height=605&hash=6128bf46d19d6c913bb54ebd94fccc98);
+  background-repeat: no-repeat;
+  background-size: cover;
+   background-size: 100% 300px;
+}
+
+h3,p {
+font-weight: bold;
+color: FFBF00;
+    
+}
+
+.thumbnail>img {
+    
+    height: 150;
+}
+    
+</style>
+<div class = "container" >
+    <header class = "jumbotron">
+        <div class = "container" >    
+        <h3>Welcome to HungryPanda</h3>
+        <p><i>Collections of best Restaurants around the globe!</i> </p>
+          
+          
+          
+          <p><a class = "btn btn-primary btn-lg" href = "/camp/new " >Add a new restaurant</a> 
+          <form action = "/camp" , method = "GET" class= "form-inline" align = "right">
+              <input type = "text" placeholder = "search" name = "search" class="form-control">
+              <input type = "button" class = "btn btn-default" value = "search">
+          </form>
+          </p>
+          </div>
+    </header>
+    
+        <div class="row text-center" style ="display:flex; flex-wrap: wrap;">
+                <div>
+                <%    if(noMatch !== undefined) { %>
+               <%= noMatch %>
+                
+            <%    } %>
+                </div>
+             <% camp.forEach(function(a){ %>
+                 <div class="col-md-3 col-sm-6">
+                    <div class="thumbnail">
+                      <img src = "<%= a.image %>" >
+                      
+                        <div class ="caption">
+                           <h4> <%= a.name %> </h4>
+                    </div>
+                    <p>
+                    <a href = "/camp/<%= a._id %>"  class = "btn btn-primary">More info </a>
+                    </p>
+                    </div>
+
+
+                 </div>
+        
+            <%  }); %>
+            
+            
+        </div>
+        
+</div>
+    
+
+<% include partials/foot %>
